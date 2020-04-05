@@ -7,12 +7,9 @@ class SVGElement {
 	}
 	
 	attr(attrs) {
-		console.log('Begin: attr() method');
 		for (const [key, value] of Object.entries(attrs)) {
-			console.log(key, value);
 			this.node.setAttributeNS(null, key, value);
 		}
-		console.log('End: attr() method');
 		return this;
 	}
 	
@@ -26,11 +23,10 @@ class SVGElement {
 
 class Sight {
 	constructor(selector, width, height) {
-		this.svg = new SVGAElement('svg').attr({viewbox: `0 0 ${width} ${height}`}).append(selector);
+		this.svg = new SVGElement('svg').attr({viewbox: `0 0 ${width} ${height}`}).append(selector);
 	}
 
 	draw(type, attrs) {
-		return new SVGElement(type).attrs(attrs).append(this.svg);
+		return new SVGElement(type).attr(attrs).append(this.svg);
 	}
 }
-
