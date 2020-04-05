@@ -8,7 +8,7 @@ class SVGElement {
 	
 	attr(attrs) {
 		console.log('Begin: attr() method');
-		for (const [key, value] of attrs.entries()) {
+		for (const [key, value] of Object.entries(attrs)) {
 			console.log(key, value);
 			this.node.setAttributeNS(null, key, value);
 		}
@@ -17,9 +17,10 @@ class SVGElement {
 	}
 	
 	append(element) {
-		const parent =  (typeof element === 'string') ? 
-			document.querySelector(element) : element.node;
+		const parent = (typeof element === 'string') ? 
+		document.querySelector(element) : element.node;
 		parent.appendChild(this.node);
+		return this;
 	}
 }
 
